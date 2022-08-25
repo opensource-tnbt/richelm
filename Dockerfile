@@ -66,3 +66,9 @@ RUN curl -L https://github.com/bitnami-labs/sealed-secrets/releases/download/v${
     chmod +x /usr/bin/kubeseal
 
 WORKDIR /apps
+
+RUN git clone https://gerrit.o-ran-sc.org/r/ric-plt/ric-dep
+
+RUN cd ric-dep/bin && \
+    ./install_common_templates_to_helm.sh
+

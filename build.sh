@@ -68,5 +68,6 @@ do
   echo $status
   if [[ ( "${status}" =~ "not found" ) || ( ${REBUILD} == "true" ) ]]; then
      build
+     break
   fi
 done

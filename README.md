@@ -1,12 +1,6 @@
-# Kubernetes tools for EKS
+# Kubernetes tools for RIC CI/CD
 
-kubernetes images with necessary tools for AWS EKS, it can be used as normal kubectl tool as well.
-
-### Preface
-
-[AWS EKS](https://aws.amazon.com/eks) maintains [special kubernetes versions](https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html) to its managed service. This repo and its built images are used to simplify the way on how easily you can deploy applicaitons with it
-
-There is no `latest` tag for this image
+kubernetes images with necessary tools that can be used as normal kubectl tool along with AWS EKS.
 
 ### Installed tools
 
@@ -21,18 +15,6 @@ There is no `latest` tag for this image
 - [awscli v1](https://github.com/aws/aws-cli) (latest version when run the build)
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets) (latest version when run the build)
 - General tools, such as bash, curl
-
-### Github Repo
-
-https://github.com/alpine-docker/k8s
-
-### build logs
-
-https://app.circleci.com/pipelines/github/alpine-docker/k8s
-
-### Docker image tags
-
-https://hub.docker.com/r/alpine/k8s/tags/
 
 # Why we need it
 
@@ -51,6 +33,9 @@ export REBUILD=true
 bash ./build.sh
 ```
 
-### Weekly build
+# Usage
 
-Build job runs weekly
+    # mount local folder with kube config in container.
+    docker run -ti --rm -w /apps \
+        -v ~/.kube:/root/.kube \
+        alpine/k8s
