@@ -66,13 +66,14 @@ build_static() {
 
 }
 
-image="alpine/k8s"
+image="richelmlegacy"
+bimage="alpine/k8s"
 if [ $# -eq 0 ]
     then
 	curl -s https://raw.githubusercontent.com/awsdocs/amazon-eks-user-guide/master/doc_source/kubernetes-versions.md |egrep -A 10 "The following Kubernetes versions"|awk -F \` '/^\+/ {print $2}'|sort -Vr | while read tag
         do
 	    echo ${tag}
-	    status=$(curl -sL https://hub.docker.com/v2/repositories/${image}/tags/${tag})
+	    status=$(curl -sL https://hub.docker.com/v2/repositories/${bimage}/tags/${tag})
 	    echo $status
 	    if [[ ( "${status}" =~ "not found" ) || ( ${REBUILD} == "true" ) ]]; then
 		build

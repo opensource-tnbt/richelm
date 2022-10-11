@@ -30,7 +30,7 @@ If you want to build these images by yourself, please follow below commands.
 
 ```
 export REBUILD=true
-bash ./build.sh
+bash ./build.sh <static>
 ```
 
 # Usage
@@ -38,4 +38,4 @@ bash ./build.sh
     # mount local folder with kube config in container.
     docker run -ti --rm -w /apps \
         -v ~/.kube:/root/.kube \
-        alpine/k8s
+        <imagename>
